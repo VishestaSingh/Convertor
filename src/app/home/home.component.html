@@ -1,0 +1,42 @@
+<body>
+    <h3 class="topWrapper">
+        Currency Converter
+    </h3>
+    <h1>*Please Enter amount and select currency to proceed !</h1>
+    <div class="ui two column centered grid topWrapper">3>
+        <div class="column">
+            <form [formGroup]="currencyForm">
+                <div class="ui fluid icon input">
+                    <input type="text" class="input" inputType="text" [formControl]="currencyForm.get('Amount')"
+                        placeholder="Please Enter Amount" />
+                </div>
+            </form>
+            <div class="col-12 currencyRow">
+                <div class="currencyButtons" role="group" aria-label="Basic example" *ngFor="let curr of currency">
+                    <button type="button" class="ui inverted button"
+                        (click)="selectedBaseCurrency(curr)">{{curr}}</button>
+                </div>
+            </div>
+            <div class="ui inverted green disabled button contentButton ">To</div>
+            <div class="col-12 currencyRow">
+                <div class="currencyButtons" role="group" aria-label="Basic example" *ngFor="let curr of currency">
+                    <button type="button" class="ui inverted button"
+                        (click)="selectedResultCurrency(curr)">{{curr}}</button>
+                </div>
+            </div>
+        </div>
+        <div class="four column centered row linkSectionWrapper" *ngIf="validator">
+            <div class="column linkSections">
+                <button routerLink="Convert/{{selectedCurr}}"
+                    [queryParams]="{Amount:currencyForm.value.Amount,BaseCurr:selectBaseCurr}"
+                    routerLinkActive="active">
+                    Convert Currency ?</button>
+            </div>
+            <div class="column linkSections">
+                <button routerLink="Trends/{{selectedCurr}}"
+                    [queryParams]="{Amount:currencyForm.value.Amount,BaseCurr:selectBaseCurr}"
+                    routerLinkActive="active"> Show trends ?</button>
+            </div>
+        </div>
+    </div>
+</body>

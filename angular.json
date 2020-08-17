@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CurrencyProject"
+    }
+  },
+  "defaultProject": "CurrencyProject",
+  "cli": {
+    "analytics": false
+  }
 }

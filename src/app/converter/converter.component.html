@@ -1,0 +1,34 @@
+<h3 class="ui horizontal divider header">
+    <i class="tag icon"></i>
+    Currency Converter
+</h3>
+<form class="ui form Wrapper" [formGroup]="converterForm">
+    <div class="ui stackable two column grid">
+        <div class="column">
+            <div class="formClass">
+                <input class="formClass" [formControl]="converterForm.get('Amount')" type="text" class="form-control"
+                    [(ngModel)]="Amount" (ngModelChange)="onInput($event)">
+            </div>
+            <select class="formClass" [formControl]="converterForm.get('CurrenciesBase')" class="ui search dropdown"
+                [(ngModel)]="currentBaseSelection" (ngModelChange)="onBaseCurrencyChange($event)">
+                <option value="">Please select Category from options below</option>
+                <option *ngFor=" let cat of currencyOptions" [ngValue]="cat">{{cat.currency}}
+                </option>
+            </select>
+        </div>
+
+        <div class="column">
+            <div class="formClass">
+                <input class="formClass" disabled [formControl]="converterForm.get('AmountConverted')" type="text"
+                    class="form-control" [(ngModel)]="AmountConverted">
+            </div>
+            <select class="formClass" [formControl]="converterForm.get('CurrenciesResult')" class="ui search dropdown"
+                [(ngModel)]="currentResultSelection" (ngModelChange)="onResultCurrencyChange($event)">
+                <option value="">Please select Category from options below</option>
+                <option *ngFor=" let cat of currencyOptions" [ngValue]="cat">{{cat.currency}}
+                </option>
+            </select>
+
+        </div>
+    </div>
+</form>
